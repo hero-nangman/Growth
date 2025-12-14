@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "쿠팡 윙 스마트 분석기",
+  "version": "1.1",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsl7qpyCM71FIhlBGBdHP8ZK27hfCQUGgguXMlHT+bjUP3ih0xf3VF4NL6AcAFuNdc8vcTbd0AlE/ZvU9GWP0ExIFN6mgFC8DOgDHO+IFtKhNSX064liSlT1MIKXmCtP1d6LZDclMKF/3so5q0EArww/w0iClEBtOCsL0qWBvXxoWukrEQS3VO+THxfZLEHrIqyzd0z/Ep7qyiM24f6HN+F01OlHSaGy6fUNcf+hSGeIqvkwFpE5l0fVQPoeMEuiLDWLd3JRnRl5m0roZf3jLyUSPynqLPfNWrK/i09zr/a37ObS3J+3tfZYcs4kF1bls41MuiLx8Wps7kXScbeEexwIDAQAB",
+  "description": "쿠팡 상품 페이지에서 윙 데이터를 분석하여 매출과 수익을 보여줍니다. 웹앱 연동 지원.",
+  "permissions": ["activeTab", "cookies"],
+  "host_permissions": [
+    "https://www.coupang.com/*",
+    "https://wing.coupang.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.coupang.com/vp/products/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "externally_connectable": {
+    "matches": [
+      "http://localhost:*/*",
+      "https://*.lovable.app/*",
+      "https://*.lovableproject.com/*"
+    ]
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
